@@ -3,6 +3,11 @@ Backbone.js Patterns
 
 Good practices that our team has learned along the way building Backbone applications.
 
+**Reference Articles**
+
+* [Smashing Magazine: Backbone.js Tips And Patterns](http://coding.smashingmagazine.com/2013/08/09/backbone-js-tips-patterns/)
+* [Rico Sta. Cruz: Backbone patterns](http://ricostacruz.com/backbone-patterns/)
+
 ## Style Guide
 
 ### Event Naming Convention
@@ -59,6 +64,25 @@ var Person = Backbone.Model.extend({
 		}
 
 		if(this.errors.length > 0) return this.errors;
+	}
+});
+```
+
+### View Patterns
+
+#### Render Element Attributes
+
+```js
+var Person = Backbone.View.extend({	
+	renderAttr: function(){
+		var attrs = {
+			'id': 'my-element-' + this.model.attributes.id,
+			'data-id': this.model.attributes.id,
+		};
+
+		_.each(attrs, function(value, name){
+			this.$el.attr(name, value);
+		}, this);
 	}
 });
 ```
