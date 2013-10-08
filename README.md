@@ -7,19 +7,27 @@ Good practices that our team has learned along the way building Backbone applica
 
 ### Event Naming Convention
 
-#### empty:Attribute (model)
+Here's the list of custom events that can be used with any Model.
 
-Documentation pending.
-
-#### notempty:Attribute (model)
-
-Documentation pending.
+* empty:[attribute] (model) — when a specific attribute becomes empty.
+* notempty:[attribute] (model) — when a specific attribute is not empty anymore.
 
 ### Variables and Method Naming Conventions
 
 #### viewData (object)
 
-object containing attributes to be sent to the template
+Object containing attributes to be sent to the template.
+
+```js
+var Bookmark = Backbone.View.extend({
+  template: _.template(…),
+    render: function () {
+      var viewData = _.extend(this.viewOptions, this.model.toJSON());
+      this.$el.html( this.template( viewData ) );
+      return this;
+    }
+});
+```
 
 #### removeEl (method)
 
