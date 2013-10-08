@@ -9,8 +9,8 @@ Good practices that our team has learned along the way building Backbone applica
 
 Here's the list of custom events that can be used with any Model.
 
-* empty:[attribute] (model) — when a specific attribute becomes empty.
-* notempty:[attribute] (model) — when a specific attribute is not empty anymore.
+* empty:\[attribute\] (model) — when a specific attribute becomes empty.
+* notempty:\[attribute\] (model) — when a specific attribute is not empty anymore.
 
 ### Variables and Method Naming Conventions
 
