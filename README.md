@@ -3,7 +3,7 @@ Backbone.js Patterns
 
 Good practices that our team has learned along the way building Backbone applications.
 
-**Reference Articles**
+**Related Articles**
 
 * [Smashing Magazine: Backbone.js Tips And Patterns](http://coding.smashingmagazine.com/2013/08/09/backbone-js-tips-patterns/)
 * [Rico Sta. Cruz: Backbone patterns](http://ricostacruz.com/backbone-patterns/)
@@ -67,6 +67,39 @@ var Person = Backbone.Model.extend({
 	}
 });
 ```
+
+#### Persisting an Collection
+
+Whenever you need to save an entire Collection, you should have a Model as wrapper that will be the context. Than you can save it as an attribute. You can have a Backbone Collection as a property of the Model and bind it to the attribute to reflect changes.
+
+Use set instead of reset when the collection changes on the attributes, this will trigger all the events like change, remove and add on the models.
+
+The `remove` event on the Collection doesn't trigger `destroy` on the Model. So if you need to have it reflected on a model that is binded to a view, you should trigger `remove` on the model and listen on the view.
+
+```js
+var MyModel = Backbone.View.extend{    
+	initialize: function(){
+	    this.elementsCollection.on({
+	        'remove': this.onRemoveElement
+	    }, this);
+	},	
+
+    onRemoveElement: function(model, collection, options){
+        model.trigger('remove', model);
+    },
+
+    updateElementsCollection: function(model){
+        this.elementsCollection = this.elementsCollection || new SD.Collection.ErfxElement();
+        this.elementsCollection.set( this.get('Elements') );
+        this.elementsCollection.parentModel = this;
+    }
+});
+```
+
+***Related links***
+
+* [“How” to save an entire collection in Backbone.js - Backbone.sync or jQuery.ajax?]
+(http://stackoverflow.com/questions/6879138/how-to-save-an-entire-collection-in-backbone-js-backbone-sync-or-jquery-ajax)
 
 ### View Patterns
 
