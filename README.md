@@ -96,10 +96,46 @@ var MyModel = Backbone.View.extend{
 });
 ```
 
+#### Persisting an Collection (Alternative)
+
+As alternative, save the collection by extending Backbone.
+
+```js
+var Groups = Backbone.Collection.extend({
+  model: Group,
+  url: function() {
+    return '/groups/'; 
+  },
+  save: function(){
+    Backbone.sync('create', this, {
+      success: function() {
+        console.log('Saved!');
+      }
+    });
+  }
+});
+```
+
+```
+Send updated collection of elements as an attribure
+PUT collection/{id} - Model (Subcollection)
+{ Subcollection: [ { ... }, { ... } ] }
+
+Send only new elements as collection to elements resource
+POST collection/{id}/subcollection (Collection)
+[ { ... }, { ... } ]
+
+Update entire collection sending it to elements resource
+PUT collection/{id}/subcollection (Collection)
+[ { id: 1 }, { id: 2 }, { ... }, { ... } ]
+```
+
 ***Related links***
 
-* [“How” to save an entire collection in Backbone.js - Backbone.sync or jQuery.ajax?]
+* ["How" to save an entire collection in Backbone.js - Backbone.sync or jQuery.ajax?]
 (http://stackoverflow.com/questions/6879138/how-to-save-an-entire-collection-in-backbone-js-backbone-sync-or-jquery-ajax)
+* [How to design a RESTful collection resource](http://stackoverflow.com/questions/2810652/how-to-design-a-restful-collection-resource)
+* [Backbone.js Save Collections](http://c2journal.com/2013/03/23/backbone-js-save-collections/)
 
 ### View Patterns
 
