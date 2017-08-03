@@ -132,8 +132,7 @@ PUT collection/{id}/subcollection (Collection)
 
 ***Related links***
 
-* ["How" to save an entire collection in Backbone.js - Backbone.sync or jQuery.ajax?]
-(http://stackoverflow.com/questions/6879138/how-to-save-an-entire-collection-in-backbone-js-backbone-sync-or-jquery-ajax)
+* ["How" to save an entire collection in Backbone.js - Backbone.sync or jQuery.ajax?](http://stackoverflow.com/questions/6879138/how-to-save-an-entire-collection-in-backbone-js-backbone-sync-or-jquery-ajax)
 * [How to design a RESTful collection resource](http://stackoverflow.com/questions/2810652/how-to-design-a-restful-collection-resource)
 * [Backbone.js Save Collections](http://c2journal.com/2013/03/23/backbone-js-save-collections/)
 
